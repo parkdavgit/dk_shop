@@ -1,0 +1,14 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# 환경 파일 (비밀번호 등)
+.env
+
+# 장고 static/media 폴더 (필요한 경우만)
+staticfiles/
+media/
+
+# VSCode, Mac, 기타
+.vscode/
+.DS_Store
