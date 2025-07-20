@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+ 
+
+
+{% block content %}
+
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+  <h5 class="my-3 border-bottom pb-2">PRODUCT CREATE</h5>
+  {% if request.user.is_superuser %}
+    <form method="POST" action=" " enctype="multipart/form-data">
+      {% csrf_token %}
+       
+      {{ form|crispy }}
+      <input type="submit" class="btn btn-primary col-12" value="제출">
+    </form>
+  {% else %}
+
+    <a href="{% url 'index' %}" class="btn btn-primary">BACK HOME - NO ACCESS </a>...
+  {% endif %}
+
+  
+</div>
+{{form.errors}}
+{% endblock %}
+

@@ -1,0 +1,71 @@
+{% load static %}
+{% static "img" as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Garden MENU</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+
+
+<!-- 스크립트를 사용하기 위한 블록 선언 ###-->
+  {% block script %}
+  {% endblock %}
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <i class="fas fa-film mr-2"></i>
+                SPRING GARDEN RESTAURANT
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                                
+                {% if user.is_authenticated %}
+                <li class="nav-item">Hello {{user.username}}
+                </li>
+               
+            
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'cartview' user.pk %}">CART</a>
+                </li>  
+             
+
+                 <li class="nav-item">
+                    <a class="nav-link nav-link-3" href="accounts/logout">Logout</a>
+                </li>
+                {% else %}
+                 <li class="nav-item">
+                    <a class="nav-link nav-link-3" href="accounts/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-3" href="accounts/login">Login</a>
+                </li>
+                {% endif %}
+               
+
+
+            </ul>
+            </div>
+        </div>
+    </nav>
+</nav>
+<br> 
+
+
+<!-- contents 사용하기 위한 블록 선언 ###-->
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- inserts -->
+{% load static %}
+{% static "img" as baseUrl %}
+
+        <div class="row tm-mb-90 tm-gallery">
+	
+                <!-- PAYMENT SUCCESS  -->
+                <div class="container my-3">
+                    <table class="table">
+                    <tr><td>PAYMENT SUCCESS</td>
+                    </tr>
+                    <tr><td><a href="{% url 'index' %}">KEEP ON SHOPPING</a></td>
+                </table>
+                </div>        
+           
+        </div> <!-- row -->
+{% endblock content %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- inserts -->
+{% load static %}
+{% static "img" as baseUrl %}
+
+<!-- contents here -->
+        
+<div class="row tm-mb-90 tm-gallery">
+
+    <form action="{% url 'cart' destination.pk %}", method="POST">
+        {% csrf_token %}    
+        
+        <div class="destination_img_area">
+            <div class="key_img">
+                <img src = '{{ destination.image.url }}' width='300' />
+            </div>
+        </div>
+
+        <div class="infoArea">
+            <h3>{{ destination.name }}</h3>
+            <div class="detailinfo">
+                <p><img src="{{destination.img.url}}" alt="Image" class="img-fluid" width="100" height="100" alt="{{ destination.name }}"></p>
+            </div>
+            
+            <div class="detail_payment">
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>
+                            <span>
+                                PRICE
+                            </span>
+                        </th>
+                        <td>
+                            <span>
+                                <strong>
+                                    {{ destination.price }} 원
+                                </strong>
+                            </span>
+                        </td>
+                    </tr>
+                                    
+                
+                    </tbody>
+                </table>
+
+                <table> <tbody>
+                    <tr>
+                                <th>
+                                    수량
+                                </th>
+                                <td>
+
+                                    <input type="number" name="quantity" id="quantity"
+                                    value="1">   
+                                                                                                                    
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                                    
+        </div>
+    <div class="container my-3">
+        <table class="table">
+        <tbody>
+                            
+        <tr><td> <button type="submit" name="cart" value="cart">ADD SHOPPING CART</button>
+            
+     
+         
+        </tbody>
+        </table>
+    </div>
+
+    
+    </form>
+    <div>
+    <a href="{% url 'food_edit' destination.pk %}"
+            class="delete btn btn-sm btn-outline-info">Edit Food</a>
+    </div>
+    <div>
+    <a href="{% url 'food_delete' destination.id %}"
+    class="delete btn btn-sm btn-outline-info">Delete Food</a>
+    </div>    
+
+
+
+
+</div>
+
+        
+{% endblock content %}

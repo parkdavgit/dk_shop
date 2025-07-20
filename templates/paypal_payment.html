@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- inserts -->
+{% load static %}
+{% static "img" as baseUrl %}
+
+<!-- contents here -->
+
+<form action="{% url 'delete_order' user.pk %}" method="POST">
+
+<div class="container-fluid tm-container-content tm-mt-60">
+    <div class="row mb-4">
+        <h2 class="col-6 tm-text-primary">
+            ORDER STATUS
+        </h2>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+            <form action="" class="tm-text-primary">
+                Page <input type="text" value="1" size="1" class="tm-input-paging tm-text-primary"> of 200
+            </form>
+        </div>
+    </div>
+
+    <div class="container my-3">
+        <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                    
+
+                <th class="thumb">
+                    IMAGE
+                </th>
+                <th class="thumb">
+                    NAME
+                </th>
+                <th class="destination">
+                    COST
+                </th>
+                <th class="quantity">
+                    QUANTITY
+                </th>
+                
+            </tr>
+            </thead>
+            <tbody>    
+                {% for product in allorder %}
+
+                <tr>
+                    
+
+                    
+                    <td class="thumb">
+                            
+                            <img src="{{ product.destinations.img.url }}" width="100" height="100" alt="{{ product.destinations.img.name }}">
+                            
+                    </td>
+                    <td class="product">
+                        {{ product.destinations.name }}
+                    </td>
+
+                    <td class="date">
+                        {{ product.cost }}
+                    </td>
+
+
+                    <td class="quantity">
+                        {{ product.quantity }}
+                    </td> 
+                </tr>
+    
+                    
+                {% endfor %}    
+
+
+            </tbody>
+        </table>
+    
+    </div>
+
+    <table class="table">
+        <thead class="thead-dark">
+                    <tr><td><button type="submit" name="delete_order" value="delete_order">ORDER 삭제하기</button>
+                        {% csrf_token %}
+
+                    </td>
+                    
+
+        </tr>
+    
+    </thead></table>
+
+
+
+    <div class="container-fluid tm-container-content tm-mt-60">
+        <div class="row mb-4">
+            <h2 class="col-6 tm-text-primary">
+                ORDER ADDRESS
+            </h2>
+
+
+            <div class="container my-3">
+                <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="thumb">
+                            EMAIL
+                        </th>
+                        <th class="thumb">
+                            ADDRESS
+                        </th>
+                        <th class="destination">
+                            ORDER DATE
+                        </th>
+                        
+                    </tr>
+                    </thead>
+                    <tbody>    
+                        
+                            <td class="email">
+                                {{checkorder.name}}
+                            </td>
+                            
+                            <td class="address">
+                                {{checkorder.address}}
+                            </td>
+                            <td class="date">
+                                {{checkorder.date}}
+                            </td> 
+                        </tr>
+            
+                    </tbody>
+                </table>
+            
+            </div>
+            
+            
+
+            <!-- CHECKOUT  -->
+            <div class="col-6 d-flex justify-content-end align-items-center">
+                <table class="table">
+                <tr><td>{{form.render}}</td>
+                </tr></table>
+            </div>        
+
+
+        </div>
+            
+        
+    </div> <!-- row -->
+            
+            
+    
+</div> <!-- container-fluid, tm-container-content -->
+
+
+
+{% endblock content %}

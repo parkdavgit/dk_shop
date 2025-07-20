@@ -37,12 +37,17 @@ INSTALLED_APPS = [
 
     # 사용자 앱
     'travello.apps.TravelloConfig',
+    'paypal.standard.ipn',
+
          
      
 
 
     # 3th party 앱
     'django_extensions',
+    'sorl.thumbnail',
+    'crispy_forms',
+    'crispy_bootstrap5',
 
 
     # 기본 내장 앱
@@ -145,3 +150,9 @@ STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+PAYPAL_RECEIVER_EMAIL='businessdk@gmail.com'
+PAYPAL_TEST=True
+# Default Auto Field setting 
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

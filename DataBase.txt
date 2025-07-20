@@ -1,0 +1,11 @@
+DB: postsql installed showing by PGADMIN with password 1019
+
+Table : travello_destination
+Column : Id, Name, Pic,img, Price, Offer, Quantity 
+
+링크도 없고 아이템 리스트만 보여주는 것으로 모델에 넣은 오더나 오더 아이템은 아직 연결된 것이 없다
+ 
+모델에 있어도 연결이 된 것이 없으면 보여주는데에는 문제가 없다는 말!
+Telusko의 Django Tutorial for Beginners | Full Course 에서 첫 프로젴트로 해 본 것
+
+이것을 가지고 오더도 하고 디테일도 보여주게 하는 쇼핑 사이트로 발전시키려다가 멈춘 상태
