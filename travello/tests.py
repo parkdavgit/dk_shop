@@ -4,7 +4,7 @@ from django.test import TestCase
 # python manage.py runserver
 # python manage.py migrate
 
-# ubuntu/4444 super user
+# ub***/***4 super user
 # Create your tests here.
 # python manage.py runserver
 # python manage.py makemigrations
@@ -152,4 +152,6 @@ from django.test import TestCase
 # destination = get_object_or_404(destination, pk=destination_id) -- ERROR: local variable 'destination' referenced before assignment
 # destination = get_object_or_404(Destination, pk=destination_id) -- OK
 
-# python manage.py runserver 
+# python manage.py runserver
+
+ 

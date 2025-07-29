@@ -68,5 +68,5 @@ class Allorder(models.Model):
     def cost(self):
         return self.quantity * self.destinations.price 
     
-
+   
  

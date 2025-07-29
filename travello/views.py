@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.models import User
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from .models import Destination, Cart, Allorder, Checkorder 
 from django.utils import timezone
@@ -174,7 +175,7 @@ def payment(request, user_id):
     paypal_dict= {
         'business': 'Businessdk@gmail.com',
         'amount':checkorder.total_cost,
-        'item_name': checkorder.name,
+        'item_name': checkorder.id, # paypal order detail 누르면 나타나는 이름
         'currency_code':'USD',
         'notify_url':'http://{}{}'.format(host, reverse('paypal-ipn')),
         'return_url':'http://{}{}'.format(host, reverse('payment_success')),
@@ -224,7 +225,7 @@ def food_search(request):
     context = {'destinations': destinations}
     return render(request, 'searchR.html', context)  
 
-
+ 
 def food_create(request):
     if request.method == 'POST':
         form = NewFoodForm(request.POST, request.FILES)
@@ -252,7 +253,7 @@ def food_create(request):
     return render(request, 'food_create.html', {'form':form})
 
 
-@login_required(login_url='index')
+@staff_member_required
 def food_edit(request,destination_id):
     user = request.user
     destination = get_object_or_404(Destination, pk=destination_id)
@@ -270,8 +271,12 @@ def food_edit(request,destination_id):
         form = NewFoodForm(instance=destination)#destination_create.html form에 destination instance 넣어 보여줘라
         return render(request, 'food_create.html', {'form': form})
 
-@login_required(login_url='index')
+@staff_member_required
 def food_delete(request, destination_id):
     destination = get_object_or_404(Destination, pk=destination_id)
     destination.delete()
     return redirect('index') 
+
+def profile(request):
+    context = {'user': request.user}
+    return render(request, 'profile.html', context)        

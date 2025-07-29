@@ -20,7 +20,6 @@ urlpatterns = [
     path('food_create/', views.food_create, name='food_create'),
     path('food_edit/<int:destination_id>/', views.food_edit, name='food_edit'),
     path('food_delete/<int:destination_id>/', views.food_delete, name='food_delete'),
-
-
-    
+    path('profile/', views.profile, name='profile'),
+ 
 ]

@@ -77,14 +77,18 @@
     
     </form>
     <div>
+
+
+    {% if request.user.is_superuser %}   
     <a href="{% url 'food_edit' destination.pk %}"
             class="delete btn btn-sm btn-outline-info">Edit Food</a>
     </div>
     <div>
     <a href="{% url 'food_delete' destination.id %}"
     class="delete btn btn-sm btn-outline-info">Delete Food</a>
-    </div>    
-
+    </div>
+    {% endif %}   
+   
 
 
 
