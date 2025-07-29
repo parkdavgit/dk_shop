@@ -372,8 +372,7 @@
             <br>#return render(request, 'paypal_payment.html',context)
             <br><br>@paypal_payment.html
             <br>여기서는 모든 받아온 context로 오더 관련 정보를 보여주고 아래의 것으로 paypal 결제
-            <br>9. #form.render</td>
-
+            <br>9. #form.render: 이것이 paypal payment button 보여주는 것
             <br>#path('payment_success/', views.payment_success, name='payment_success'),
             <br>#def payment_success(request):
             <br>#return render(request, 'payment_success.html')

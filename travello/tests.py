@@ -154,4 +154,14 @@ from django.test import TestCase
 
 # python manage.py runserver
 
- 
+ <table class="table">
+        <thead class="thead-dark">
+                    <tr><td><button type="submit" name="delete_order" value="delete_order">ORDER 삭제하기</button>
+                        {% csrf_token %}
+
+                    </td>
+                    
+
+        </tr>
+    
+    </thead></table>
